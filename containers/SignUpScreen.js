@@ -7,11 +7,12 @@ import {
   TextInput,
   View,
   ScrollView,
-  StatusBar,
   StyleSheet,
   TouchableOpacity,
   Alert,
   KeyboardAvoidingView,
+  SafeAreaView,
+  StatusBar,
 } from "react-native";
 import Constants from "expo-constants";
 
@@ -47,7 +48,8 @@ export default function SignUpScreen({ setToken }) {
             name: name,
             description: description,
             password: password,
-          }
+          },
+          { headers: { "Content-Type": "application/json" } }
         );
         console.log(response);
         if (response.data.token) {
@@ -63,7 +65,7 @@ export default function SignUpScreen({ setToken }) {
 
   return (
     <ScrollView style={{ backgroundColor: "#f0475b" }}>
-      <StatusBar barStyle="light-content" />
+      <StatusBar barStyle="light-content" backgroundColor="#f0475b" />
       <KeyboardAvoidingView
         behavior={Platform.OS == "ios" ? "padding" : "height"}
         style={styles.global}
@@ -197,54 +199,3 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
 });
-
-// const styles = StyleSheet.create({
-//   global: {
-//     flex: 1,
-//     padding: 20,
-//     alignItems: "center",
-//     justifyContent: "center",
-//     paddingTop: Constants.StatusBarHeight,
-//   },
-//   connection: {
-//     padding: 20,
-//     color: "white",
-//   },
-
-//   haut: {
-//     paddingTop: 50,
-//     paddingBottom: 40,
-//   },
-//   titre: {
-//     fontSize: 25,
-//     color: "white",
-//   },
-//   saisie: {
-//     paddingBottom: 30,
-//   },
-//   input: {
-//     fontSize: 20,
-//     color: "white",
-//     width: 300,
-
-//     borderBottomColor: "#ffffff",
-//     borderBottomWidth: 1,
-//   },
-//   inputpresentation: {
-//     fontSize: 20,
-//     color: "white",
-
-//     // borderBottomColor: "#ffffff",
-//     // borderBottomWidth: 1,
-//   },
-//   presentation: {
-//     padding: 50,
-//     color: "white",
-//     fontSize: 17,
-//   },
-//   inscription: {
-//     paddingTop: 40,
-//     color: "white",
-//     fontSize: 15,
-//   },
-// });

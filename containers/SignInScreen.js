@@ -16,6 +16,7 @@ import {
 import Constants from "expo-constants";
 import { Ionicons } from "@expo/vector-icons";
 import axios from "axios";
+import HomeScreen from "./HomeScreen";
 
 export default function SignInScreen({ setToken }) {
   const navigation = useNavigation();
@@ -50,7 +51,7 @@ export default function SignInScreen({ setToken }) {
 
   return (
     <ScrollView style={{ backgroundColor: "#f0475b" }}>
-      <StatusBar barStyle="light-content" />
+      <StatusBar barStyle="light-content" backgroundColor="#f0475b" />
       <KeyboardAvoidingView
         behavior={Platform.OS == "ios" ? "padding" : "height"}
         style={styles.global}
@@ -103,8 +104,7 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: 16,
     padding: 40,
-    justifyContent: "center",
-    paddingTop: Constants.StatusBarHeight,
+    color: "#f0475b",
   },
   haut: {
     alignItems: "center",
