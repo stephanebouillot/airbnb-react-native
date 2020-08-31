@@ -175,6 +175,25 @@ export default function App() {
                     </>
                   )}
                 </Stack.Screen>
+                <Stack.Screen
+                  name="Room"
+                  options={{
+                    title: "Room",
+                    headerStyle: { backgroundColor: "#f0475b", height: 70 },
+                    headerTitleAlign: "center",
+                    headerTintColor: "white",
+                  }}
+                >
+                  {() => (
+                    <>
+                      <StatusBar
+                        barStyle="light-content"
+                        backgroundColor="#f0475b"
+                      />
+                      <RoomScreen />
+                    </>
+                  )}
+                </Stack.Screen>
               </Stack.Navigator>
             )}
           </Tab.Screen>
@@ -204,7 +223,7 @@ export default function App() {
                         barStyle="light-content"
                         backgroundColor="#f0475b"
                       />
-                      <SettingsScreen />
+                      <ProfileScreen setToken={setToken} />
                     </>
                   )}
                 </Stack.Screen>
