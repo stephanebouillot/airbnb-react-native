@@ -18,7 +18,7 @@ import { Ionicons } from "@expo/vector-icons";
 import axios from "axios";
 import HomeScreen from "./HomeScreen";
 
-export default function SignInScreen({ setToken }) {
+export default function SignInScreen({ setToken, setUserId }) {
   const navigation = useNavigation();
 
   const [email, setEmail] = useState("");
@@ -35,6 +35,7 @@ export default function SignInScreen({ setToken }) {
         );
         if (response.data.token) {
           setToken(response.data.token);
+          setUserId(response.data.id);
         }
       } catch (error) {
         if (error.response.status === 401) {

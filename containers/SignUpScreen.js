@@ -18,7 +18,7 @@ import Constants from "expo-constants";
 
 import axios from "axios";
 
-export default function SignUpScreen({ setToken }) {
+export default function SignUpScreen({ setToken, setUserId }) {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [name, setName] = useState("");
@@ -51,9 +51,9 @@ export default function SignUpScreen({ setToken }) {
           },
           { headers: { "Content-Type": "application/json" } }
         );
-        console.log(response);
         if (response.data.token) {
-          Link;
+          setToken(response.data.token);
+          setUserId(response.data.id);
         } else {
           throw Error(response.data);
         }

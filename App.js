@@ -29,6 +29,19 @@ export default function App() {
     setUserToken(token);
   };
 
+  const setUserId = async (userId) => {
+    if (userId) {
+      AsyncStorage.setItem("userId", userId);
+    } else {
+      AsyncStorage.removeItem("userId");
+    }
+  };
+
+  const logout = async () => {
+    setToken(null);
+    setUserId(null);
+  };
+
   useEffect(() => {
     if (Platform.OS === "android") {
       UIManager.setLayoutAnimationEnabledExperimental(true);
@@ -61,7 +74,7 @@ export default function App() {
             name="SignIn"
             options={{ header: () => null, animationEnabled: false }}
           >
-            {() => <SignInScreen setToken={setToken} />}
+            {() => <SignInScreen setToken={setToken} setUserId={setUserId} />}
           </Stack.Screen>
           <Stack.Screen
             name="SignUp"
@@ -70,7 +83,7 @@ export default function App() {
               animationEnabled: false,
             }}
           >
-            {() => <SignUpScreen setToken={setToken} />}
+            {() => <SignUpScreen setToken={setToken} setUserId={setUserId} />}
           </Stack.Screen>
         </Stack.Navigator>
       ) : (
@@ -223,7 +236,7 @@ export default function App() {
                         barStyle="light-content"
                         backgroundColor="#f0475b"
                       />
-                      <ProfileScreen setToken={setToken} />
+                      <ProfileScreen logout={logout} />
                     </>
                   )}
                 </Stack.Screen>
