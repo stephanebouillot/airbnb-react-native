@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { useRoute, useNavigation } from "@react-navigation/core";
-import { TouchableOpacity } from "react-native-gesture-handler";
+// import { useRoute, useNavigation } from "@react-navigation/core";
+// import { TouchableOpacity } from "react-native-gesture-handler";
 import {
   Image,
   Text,
   Button,
   TextInput,
   View,
+  ActivityIndicator,
   ScrollView,
   StyleSheet,
   KeyboardAvoidingView,
@@ -28,18 +29,17 @@ export default function ProfileScreen({ logout }) {
   const [description, setDescription] = useState("");
 
   const [photo, setPhoto] = useState(null);
+  const [photoLoading, setPhotoLoading] = useState(true);
 
   const getCameraRollPermissionsAsync = async () => {
     const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
-    // console.log(status);
 
     if (status === "granted") {
       const result = await ImagePicker.launchImageLibraryAsync();
-      // console.log(result);
 
       if (!result.cancelled) {
-        setPhoto(result.uri);
-        await sendPhoto();
+        setPhotoLoading(true);
+        sendPhoto(result.uri);
       }
     } else {
       alert("Permission refusée");
@@ -52,18 +52,16 @@ export default function ProfileScreen({ logout }) {
     if (status === "granted") {
       const result = await ImagePicker.launchCameraAsync();
       if (!result.cancelled) {
-        setPhoto(result.uri);
-        await sendPhoto();
+        setPhotoLoading(true);
+        sendPhoto(result.uri);
       }
     } else {
       alert("Accès refusé");
     }
   };
 
-  const sendPhoto = async () => {
+  const sendPhoto = async (uri) => {
     try {
-      const uri = photo;
-
       const uriParts = uri.split(".");
 
       const fileType = uriParts[1];
@@ -88,9 +86,12 @@ export default function ProfileScreen({ logout }) {
       );
 
       console.log(response.data);
+      setPhoto(uri);
+      setPhotoLoading(false);
       alert("Photo envoyee");
     } catch (error) {
       Alert.alert("Erreur", error.message);
+      setPhotoLoading(false);
     }
   };
 
@@ -115,6 +116,7 @@ export default function ProfileScreen({ logout }) {
           setName(response.data.name);
           setUsername(response.data.username);
           setPhoto(response.data.photo[0].url);
+          setPhotoLoading(false);
 
           // console.log("Test");
         } else {
@@ -159,7 +161,8 @@ export default function ProfileScreen({ logout }) {
         style={styles.global}
       >
         <View style={styles.portraituser}>
-          {photo && (
+          {photoLoading && <ActivityIndicator size="large" color="#f0475b" />}
+          {photo && !photoLoading && (
             <Image
               source={{
                 uri: photo,
@@ -229,9 +232,7 @@ export default function ProfileScreen({ logout }) {
             updateData();
           }}
         />
-        {/* <View>
-  <Text>user id : {params.userId}</Text>
-</View> */}
+
         <AppButton
           title="Se deconnecter"
           buttonColor="red"

@@ -44,14 +44,25 @@ const HomeScreen = () => {
   }, []);
 
   return isLoading ? (
-    <ActivityIndicator size="large" color="#00ff00" />
+    <View
+      style={{
+        flex: 1,
+        justifyContent: "center",
+      }}
+    >
+      <ActivityIndicator size="large" color="#f0475b" />
+    </View>
   ) : (
     <View style={styles.global}>
       <FlatList
         data={data.rooms}
-        renderItem={({ item }) => {
+        renderItem={({ index, item }) => {
           return (
-            <View style={styles.card}>
+            <View
+              style={
+                index === data.rooms.length - 1 ? styles.lastCard : styles.card
+              }
+            >
               <TouchableOpacity
                 onPress={() => {
                   navigation.navigate("Room", {
@@ -110,6 +121,14 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
     borderBottomColor: "#ccc",
     borderBottomWidth: 1,
+  },
+  lastCard: {
+    flex: 1,
+    backgroundColor: "white",
+    marginLeft: 20,
+    marginRight: 20,
+    paddingTop: 20,
+    paddingBottom: 20,
   },
   image: {
     height: 230,

@@ -69,8 +69,13 @@ const Around = () => {
   const navigation = useNavigation();
 
   return isLoading === true ? (
-    <View>
-      <ActivityIndicator size="large" color="#00ff00" />
+    <View
+      style={{
+        flex: 1,
+        justifyContent: "center",
+      }}
+    >
+      <ActivityIndicator size="large" color="#f0475b" />
     </View>
   ) : (
     <View style={styles.global}>
