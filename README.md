@@ -3,7 +3,7 @@
 </h1>
 
 <p align="center">
-	<img src="https://github.com/stephanebouillot/airbnb-react-native/master/screenshots/demo.gif" width="800">
+	<img src="screenshots/demo.gif" width="800">
 </p>
 
 ## Overview
@@ -16,27 +16,27 @@
 <img
 		width="210"
 		alt="ecran connection"
-		src="https://github.com/stephanebouillot/airbnb-react-native/master/screenshots/login.png">
+		src="screenshots/login.png">
 <img
 		width="210"
 		alt="ecran inscription"
-		src="https://github.com/stephanebouillot/airbnb-react-native/master/screenshots/signin.png">
+		src="screenshots/signin.png">
 <img
 		width="210"
 		alt="ecran accueil"
-		src="https://github.com/stephanebouillot/airbnb-react-native/master/screenshots/pageprincipale.png">
+		src="screenshots/pageprincipale.png">
 <img
 		width="210"
 		alt="ecran room"
-		src="https://github.com/stephanebouillot/airbnb-react-native/master/screenshots/room.png">
+		src="screenshots/room.png">
 <img
 		width="210"
 		alt="ecran map"
-		src="https://github.com/stephanebouillot/airbnb-react-native/master/screenshots/map.png">
+		src="screenshots/map.png">
 <img
 		width="210"
 		alt="ecran profile"
-		src="https://github.com/stephanebouillot/airbnb-react-native/master/screenshots/profile.png">
+		src="screenshots/profile.png">
 
 ## Packages
 
