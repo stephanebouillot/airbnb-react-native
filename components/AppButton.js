@@ -46,7 +46,6 @@ const styles = StyleSheet.create({
     fontSize: 19,
     fontWeight: "200",
     alignSelf: "center",
-    // textTransform: "uppercase",
   },
   appButtonTextWhite: {
     color: "#f0475b",

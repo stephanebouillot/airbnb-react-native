@@ -13,10 +13,9 @@ import {
   StyleSheet,
   Alert,
 } from "react-native";
-import Constants from "expo-constants";
+
 import { Ionicons } from "@expo/vector-icons";
 import axios from "axios";
-import HomeScreen from "./HomeScreen";
 
 export default function SignInScreen({ setToken, setUserId }) {
   const navigation = useNavigation();
@@ -92,8 +91,6 @@ export default function SignInScreen({ setToken, setUserId }) {
         />
         <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
           <Text style={styles.inscription}>Pas de compte ? S'inscrire</Text>
-
-          {/* <Link screenName={"SignUp"}></Link> */}
         </TouchableOpacity>
       </KeyboardAvoidingView>
     </ScrollView>

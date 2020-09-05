@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-// import { useRoute, useNavigation } from "@react-navigation/core";
-// import { TouchableOpacity } from "react-native-gesture-handler";
+
 import {
   Image,
   Text,
@@ -85,7 +84,6 @@ export default function ProfileScreen({ logout }) {
         }
       );
 
-      console.log(response.data);
       setPhoto(uri);
       setPhotoLoading(false);
       alert("Photo envoyee");
@@ -117,8 +115,6 @@ export default function ProfileScreen({ logout }) {
           setUsername(response.data.username);
           setPhoto(response.data.photo[0].url);
           setPhotoLoading(false);
-
-          // console.log("Test");
         } else {
           throw Error(response.data);
         }
@@ -256,10 +252,6 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
   portraituser: {
-    // backgroundColor: "#f0475b",
-    // borderColor: "#ffffff",
-    // borderWidth: 1,
-
     height: 100,
     alignItems: "center",
     justifyContent: "center",

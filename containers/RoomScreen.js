@@ -18,7 +18,7 @@ import {
 
 import axios from "axios";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
-// import Swiper from "react-native-swiper";
+
 import SwiperFlatList from "react-native-swiper-flatlist";
 import MapView from "react-native-maps";
 
@@ -30,9 +30,6 @@ const RoomScreen = () => {
   const [expandedDescription, setExpandedDescription] = useState(false);
 
   const { id } = route.params;
-  // const location = await Location.getCurrentPositionAsync({});
-  // setLatitude(location.coords.latitude);
-  // setLongitude(location.coords.longitude);
 
   const Stars = ({ rate }) => {
     const tab = [];
@@ -70,8 +67,13 @@ const RoomScreen = () => {
   useNavigation();
 
   return isLoading === true ? (
-    <View>
-      <ActivityIndicator size="large" color="#00ff00" />
+    <View
+      style={{
+        flex: 1,
+        justifyContent: "center",
+      }}
+    >
+      <ActivityIndicator size="large" color="#f0475b" />
     </View>
   ) : (
     <ScrollView>
@@ -157,10 +159,6 @@ const RoomScreen = () => {
           <View>
             <MapView
               style={styles.map}
-              // locate={{
-              //   latitude: room.city.loc[0],
-              //   longitude: room.city.loc[1],
-              // }}
               region={{
                 latitude: room.loc[1],
                 longitude: room.loc[0],
@@ -190,7 +188,6 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
   slide: {
-    // flex: 1,
     height: 300,
     width: 400,
 
@@ -258,6 +255,5 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     marginTop: 30,
     height: 200,
-    // backgroundColor: "red",
   },
 });

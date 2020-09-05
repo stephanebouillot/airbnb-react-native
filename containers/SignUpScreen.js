@@ -146,8 +146,6 @@ export default function SignUpScreen({ setToken, setUserId }) {
 
         <TouchableOpacity onPress={() => navigation.navigate("SignIn")}>
           <Text style={styles.connection}>Deja un compte ? Se connecter</Text>
-
-          {/* <Link screenName={"SignUp"}></Link> */}
         </TouchableOpacity>
       </KeyboardAvoidingView>
     </ScrollView>

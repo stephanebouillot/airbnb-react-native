@@ -159,7 +159,6 @@ const styles = StyleSheet.create({
   annoncebasgauche: {
     flex: 1,
     marginRight: 15,
-    // flexDirection: "column",
   },
   title: {
     fontSize: 20,
@@ -170,19 +169,11 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     marginTop: 5,
     marginRight: 10,
-
-    // borderBottomWidth: 40,
-    // borderBottomColor: "black",
   },
-  // icones: {
-  //   color: "grey",
-  //   // flexDirection: "row",
-  //   // borderBottomWidth: 40,
-  //   // borderBottomColor: "black",
-  // },
+
   avis: {
     fontSize: 20,
-    // paddingTop: 3,
+
     paddingLeft: 20,
     color: "grey",
   },
