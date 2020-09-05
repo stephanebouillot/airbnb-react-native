@@ -43,6 +43,10 @@
 - [React Navigation v5](https://reactnavigation.org/)
 - [React Native Maps](https://github.com/react-native-community/react-native-maps)
 - [Axios](https://github.com/axios/axios)
+- [React Native Image Picker](https://github.com/react-native-community/react-native-image-picker)
+- [Expo Location](https://docs.expo.io/versions/latest/sdk/location/)
+- [Expo Permissions](https://docs.expo.io/versions/latest/sdk/permissions/)
+- [React Native Swiper Flatlist](https://www.npmjs.com/package/react-native-swiper-flatlist)
 
 ## Installation and usage
 
