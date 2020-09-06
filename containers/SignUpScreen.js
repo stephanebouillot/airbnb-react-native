@@ -18,6 +18,9 @@ import Constants from "expo-constants";
 
 import axios from "axios";
 
+/*
+ ** Screen used to register a new account, and then log in with that new account
+ */
 export default function SignUpScreen({ setToken, setUserId }) {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
@@ -27,6 +30,7 @@ export default function SignUpScreen({ setToken, setUserId }) {
   const [confirmpassword, setConfirmpassword] = useState("");
   const navigation = useNavigation();
 
+  // Tries to register an account, and on success, logs in and loads the rest of the app using setToken
   const signUp = async (event) => {
     if (password !== confirmpassword) {
       alert("Les mots de passe sont differents.");

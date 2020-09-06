@@ -14,6 +14,7 @@ import {
 
 import axios from "axios";
 import { TouchableOpacity } from "react-native-gesture-handler";
+
 const Stars = ({ rate }) => {
   const tab = [];
   for (let i = 0; i < 5; i++) {
@@ -27,12 +28,20 @@ const Stars = ({ rate }) => {
   return tab;
 };
 
+/*
+ ** Screen displaying all the available appartments, loads when the user connects
+ */
 const HomeScreen = () => {
   const navigation = useNavigation();
+
+  // State used to store all the relevant appartments' data
   const [data, setData] = useState([]);
+
   const [isLoading, setIsLoading] = useState(true);
 
+  // Fetches the data of all the appartments located in Paris when the screen loads
   useEffect(() => {
+    // Fetches the data of all the appartments located in Paris
     const fetchData = async () => {
       const response = await axios.get(
         "https://airbnb-api.herokuapp.com/api/room?city=paris"
@@ -64,6 +73,7 @@ const HomeScreen = () => {
               }
             >
               <TouchableOpacity
+                // When the user presses a room, redirects him to that room's screen
                 onPress={() => {
                   navigation.navigate("Room", {
                     id: item._id,

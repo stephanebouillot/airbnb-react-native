@@ -17,12 +17,16 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import axios from "axios";
 
+/*
+ ** Screen used to log in into our app
+ */
 export default function SignInScreen({ setToken, setUserId }) {
   const navigation = useNavigation();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  // Tries to log in to the back end using the user's email/password combination, and calls setToken to load the rest of the app
   const signIn = async (event) => {
     if (email === "" || password === "") {
       alert("Veuillez remplir les champs vides.");

@@ -9,7 +9,6 @@ import ProfileScreen from "./containers/ProfileScreen";
 import RoomScreen from "./containers/RoomScreen";
 import SignInScreen from "./containers/SignInScreen";
 import SignUpScreen from "./containers/SignUpScreen";
-import SettingsScreen from "./containers/SettingsScreen";
 import Around from "./containers/Around";
 
 const Tab = createBottomTabNavigator();
@@ -64,8 +63,6 @@ export default function App() {
   }, []);
 
   return (
-    // STACK NAVIGATOR AFFICHAGE SANS TOKEN ENREGISTRE
-
     <NavigationContainer>
       {isLoading ? null : userToken === null ? ( // We haven't finished checking for the token yet
         // No token found, user isn't signed in
@@ -87,10 +84,7 @@ export default function App() {
           </Stack.Screen>
         </Stack.Navigator>
       ) : (
-        // STACK NAVIGATOR AFFICHAGE TOKEN ENREGISTRE
         // User is signed in
-
-        // Option des reglages du header (haut de l appli) et tabbab (bas de l appli)
         <Tab.Navigator
           tabBarOptions={{
             style: {
@@ -115,6 +109,7 @@ export default function App() {
             }}
           >
             {() => (
+              // Creating Stack Navigator for "Home" tab
               <Stack.Navigator>
                 <Stack.Screen
                   name="Home"
@@ -168,6 +163,7 @@ export default function App() {
             }}
           >
             {() => (
+              // Creating Stack Navigator for "Around me" tab
               <Stack.Navigator>
                 <Stack.Screen
                   name="Around me"
@@ -220,6 +216,7 @@ export default function App() {
             }}
           >
             {() => (
+              // Creating Stack Navigator for "Profile" tab
               <Stack.Navigator>
                 <Stack.Screen
                   name="Profile"

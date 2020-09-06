@@ -22,11 +22,19 @@ import axios from "axios";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import MapView, { Callout } from "react-native-maps";
 
+/*
+ ** Screen showing a map with nearby appartments
+ */
 const Around = () => {
   const [isLoading, setIsLoading] = useState(true);
 
+  // State used to store the users' GPS coordinates
   const [coords, setCoords] = useState();
+
+  // State used to store the nearby appartments' data
   const [rooms, setRooms] = useState([]);
+
+  // Asks for location permission when the screen loads
   useEffect(() => {
     const askPermission = async () => {
       const obj = await Permissions.askAsync(Permissions.LOCATION);
@@ -41,7 +49,9 @@ const Around = () => {
     askPermission();
   }, []);
 
+  // Fetches nearby appartments' data every time our coordinates change
   useEffect(() => {
+    // Fetches all the nearby appartments from the backend
     const fetchData = async () => {
       try {
         const response = await axios.get(
@@ -102,6 +112,7 @@ const Around = () => {
           >
             <Callout
               onPress={() => {
+                // When the user presses the Markers' callout, redirects him to the appropriate room screen
                 navigation.navigate("Room", {
                   id: room._id,
                 });

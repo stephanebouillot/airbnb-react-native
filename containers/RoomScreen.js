@@ -22,13 +22,19 @@ import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import SwiperFlatList from "react-native-swiper-flatlist";
 import MapView from "react-native-maps";
 
+/*
+ ** Screen showing a room's details, including a map showing its location
+ */
 const RoomScreen = () => {
   const route = useRoute();
   const [room, setRoom] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [tabimage, setTabImage] = useState([]);
+
+  // State used to expand the description when the user presses it
   const [expandedDescription, setExpandedDescription] = useState(false);
 
+  // ID of the room we're showing the details of
   const { id } = route.params;
 
   const Stars = ({ rate }) => {
@@ -46,7 +52,9 @@ const RoomScreen = () => {
     return tab;
   };
 
+  // Fetches the room's details from the backend when the screen loads
   useEffect(() => {
+    // Fetches the room's details from the backend
     const fetchData = async () => {
       try {
         const response = await axios.get(

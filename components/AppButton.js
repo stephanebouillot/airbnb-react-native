@@ -1,6 +1,9 @@
 import * as React from "react";
 import { Text, TouchableOpacity, StyleSheet } from "react-native";
 
+/*
+ ** Button with a design adapted for our use case.
+ */
 const AppButton = ({ onPress, title, buttonColor, textSize, fixedWidth }) => (
   <TouchableOpacity
     onPress={onPress}

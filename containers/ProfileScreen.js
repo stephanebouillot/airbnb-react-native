@@ -21,6 +21,9 @@ import * as Permissions from "expo-permissions";
 
 import AppButton from "../components/AppButton";
 
+/*
+ ** Screen showing the user informations, and allowing him to modify them
+ */
 export default function ProfileScreen({ logout }) {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
@@ -30,7 +33,8 @@ export default function ProfileScreen({ logout }) {
   const [photo, setPhoto] = useState(null);
   const [photoLoading, setPhotoLoading] = useState(true);
 
-  const getCameraRollPermissionsAsync = async () => {
+  // Asks the user for permission to use the device's photos, then asks him to pick one, and sends it as user profile picture
+  const updatePhotoFromCameraRoll = async () => {
     const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
 
     if (status === "granted") {
@@ -45,8 +49,8 @@ export default function ProfileScreen({ logout }) {
     }
   };
 
-  // Accéder à l'appareil photo
-  const getCameraPermissionAsync = async () => {
+  // Asks the user the permission to take pictures, and if granted, takes and send a picture as user profile picture
+  const updatePhotoFromCamera = async () => {
     const { status } = await Permissions.askAsync(Permissions.CAMERA);
     if (status === "granted") {
       const result = await ImagePicker.launchCameraAsync();
@@ -59,6 +63,7 @@ export default function ProfileScreen({ logout }) {
     }
   };
 
+  // Uploads a photo to the backend as user profile picture
   const sendPhoto = async (uri) => {
     try {
       const uriParts = uri.split(".");
@@ -93,7 +98,9 @@ export default function ProfileScreen({ logout }) {
     }
   };
 
+  // Fetches user data when the screen loads
   useEffect(() => {
+    // Fetches user data from the backend
     const fetchData = async (event) => {
       try {
         const response = await axios.get(
@@ -125,6 +132,7 @@ export default function ProfileScreen({ logout }) {
     fetchData();
   }, []);
 
+  // Updates the user data by sending them to the backend
   const updateData = async (event) => {
     try {
       const response = await axios.put(
@@ -171,12 +179,12 @@ export default function ProfileScreen({ logout }) {
           <AppButton
             title="Prendre une photo"
             textSize={14}
-            onPress={() => getCameraPermissionAsync()}
+            onPress={() => updatePhotoFromCamera()}
           ></AppButton>
           <AppButton
             title="Choisir une photo"
             textSize={14}
-            onPress={() => getCameraRollPermissionsAsync()}
+            onPress={() => updatePhotoFromCameraRoll()}
           ></AppButton>
         </View>
 
